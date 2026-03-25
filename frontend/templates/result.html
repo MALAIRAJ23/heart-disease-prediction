@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Heart Disease Risk Prediction Result</h2>
+            </div>
+            <div class="card-body text-center">
+                {% if prediction == 1 %}
+                <div class="alert alert-danger" role="alert">
+                    <h3 class="alert-heading">High Risk of Heart Disease Detected!</h3>
+                    <p class="mb-0">Based on the provided medical parameters, there is a <strong>{{ probability
+                            }}%</strong> probability of heart disease.</p>
+                </div>
+                <div class="mt-4">
+                    <h4>Recommendations:</h4>
+                    <ul class="text-start">
+                        <li>Consult with a cardiologist immediately</li>
+                        <li>Consider additional diagnostic tests</li>
+                        <li>Follow a heart-healthy diet</li>
+                        <li>Engage in regular physical activity</li>
+                        <li>Manage stress levels</li>
+                        <li>Quit smoking if applicable</li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="alert alert-success" role="alert">
+                    <h3 class="alert-heading">Low Risk of Heart Disease</h3>
+                    <p class="mb-0">Based on the provided medical parameters, there is a <strong>{{ probability
+                            }}%</strong> probability of heart disease.</p>
+                </div>
+                <div class="mt-4">
+                    <h4>Recommendations:</h4>
+                    <ul class="text-start">
+                        <li>Maintain your current healthy lifestyle</li>
+                        <li>Continue regular check-ups</li>
+                        <li>Follow a balanced diet</li>
+                        <li>Stay physically active</li>
+                        <li>Monitor your blood pressure and cholesterol</li>
+                    </ul>
+                </div>
+                {% endif %}
+
+                <div class="mt-4">
+                    <a href="/" class="btn btn-primary">Make Another Prediction</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0">Important Notice</h4>
+            </div>
+            <div class="card-body">
+                <p>
+                    This prediction is based on a machine learning model and should not be considered as a definitive
+                    medical diagnosis.
+                    Always consult with a qualified healthcare professional for accurate diagnosis and treatment
+                    recommendations.
+                </p>
+                <p class="mb-0">
+                    The model has been trained on historical data and provides probabilistic estimates based on the
+                    input parameters.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

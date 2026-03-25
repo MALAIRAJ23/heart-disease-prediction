@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: heart-api
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: heart-frontend
+    command: python app.py
+    environment:
+      INFERENCE_API_URL: http://api:8000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - api
